@@ -1,74 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bitcoin BAE</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.min.js"></script>
-
-
-
-
-  
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.min.js"></script> -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="container">
-        <div class="model-viewer-container">
-            <model-viewer src="https://github.com/unicornlaunching/bitcoinbae/blob/main/Mintv2Dancing2.glb?raw=true" poster="https://img.freepik.com/premium-psd/portrait-good-looking-executive_410516-125326.jpg" alt="3D Model" auto-rotate camera-controls></model-viewer>
+
+<body class="">
+    <div
+        class="flex flex-col justify-center items-center h-screen bg-gradient-to-br from-purple-500 to-purple-700 m-0 ">
+        <div class="flex w-4/5 h-4/5 bg-white rounded-lg shadow-lg ">
+            <div class="w-3/5 bg-gray-100 flex items-center justify-center">
+                <model-viewer
+                    src="https://corsproxy.io/?https://githubraw.com/unicornlaunching/bitcoinbae/main/Mintv2Dancing2.glb"
+                    poster="https://img.freepik.com/premium-psd/portrait-good-looking-executive_410516-125326.jpg"
+                    alt="3D Model" auto-rotate camera-controls class="w-full h-full bg-white"></model-viewer>
+            </div>
+            <div class="w-2/5 flex flex-col bg-white">
+                <div class="p-4 bg-purple-700 text-white text-center text-lg">Meet Luke.</div>
+                <div id="chat-history" class="flex-grow p-4 overflow-y-auto border-b border-gray-200"></div>
+
+            </div>
 
         </div>
-        <div class="chat-interface">
-            <div class="chat-header">Meet Luke.</div>
-            <div class="chat-history" id="chat-history"></div>
-            <div class="chat-input-container">
-                <input type="text" id="chat-input" placeholder="Is this seat taken?">
-                <button id="send-button">Send</button>
-            </div>
+        <div class="flex p-2 bg-gray-100 w-4/5 ">
+            <input type="text" id="chat-input" placeholder="Is this seat taken?"
+                class="flex-grow flex-shrink p-1  border border-gray-300 rounded-lg text-lg">
+            <button id="send-button"
+                class=" p-2 bg-indigo-500 text-white text-md rounded-lg hover:bg-indigo-400 transition">Send</button>
         </div>
     </div>
 
-  <!-- Import the component -->
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
-  
-  
-  </body>
 
+    <!-- Import the component -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 
-<script>
-  document.getElementById('send-button').addEventListener('click', sendMessage);
-document.getElementById('chat-input').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        sendMessage();
-    }
-});
+    <script>
+        document.getElementById('send-button').addEventListener('click', sendMessage);
+        document.getElementById('chat-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
 
-function sendMessage() {
-    const chatInput = document.getElementById('chat-input');
-    const message = chatInput.value.trim();
+        function sendMessage() {
+            const chatInput = document.getElementById('chat-input');
+            const message = chatInput.value.trim();
 
-    if (message) {
-        addMessageToChat('You', message);
-        chatInput.value = '';
+            if (message) {
+                addMessageToChat('You', message);
+                chatInput.value = '';
 
-        // Simulate a response from Replika
-        setTimeout(() => {
-            addMessageToChat('Chad', 'I have a feeling you are going to make me late for my next meeting.');
-        }, 1000);
-    }
-}
+                // Simulate a response from Replika
+                setTimeout(() => {
+                    addMessageToChat('Chad', 'I have a feeling you are going to make me late for my next meeting.');
+                }, 1000);
+            }
+        }
 
-function addMessageToChat(sender, message) {
-    const chatHistory = document.getElementById('chat-history');
-    const messageElement = document.createElement('div');
-    messageElement.classList.add('chat-message');
-    messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
-    chatHistory.appendChild(messageElement);
-    chatHistory.scrollTop = chatHistory.scrollHeight;
-}
-
-  
-</script>
+        function addMessageToChat(sender, message) {
+            const chatHistory = document.getElementById('chat-history');
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('chat-message');
+            messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+            chatHistory.appendChild(messageElement);
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+        }
+    </script>
+</body>
 
 </html>
